@@ -1,8 +1,809 @@
 <!doctype html>
 <html lang="es">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MarAngel Store</title>
-<style>
-:root{--navy:#071329;--card:#102344;--line:rgba(255,255,255,.12);--gold:#d6a84f;--goldLight:#f2d28b;--white:#fff;--muted:#c1cbdd;--green:#20a35e;--radius:22px;--shadow:0 18px 55px rgba(0,0,0,.32)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#06101f,#0a1933 55%,#071329);font-family:Arial,Helvetica,sans-serif;color:var(--white);line-height:1.5}a{text-decoration:none;color:inherit}button,input,select,textarea{font:inherit}.container{width:min(1180px,calc(100% - 28px));margin:auto}header{position:sticky;top:0;z-index:20;background:rgba(6,16,31,.88);backdrop-filter:blur(15px);border-bottom:1px solid var(--line)}.bar{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:11px}.brand-icon{display:grid;place-items:center;width:43px;height:43px;border:1px solid rgba(214,168,79,.4);border-radius:14px;background:#10203f;color:var(--goldLight);font-family:Georgia;font-size:25px;font-weight:bold}.brand strong{display:block;font:700 1.75rem Georgia,serif;line-height:.9}.brand small{color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.15em}.nav{display:flex;gap:9px;align-items:center}.nav a{padding:10px 15px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:.9rem}.hero{padding:30px 0 20px}.hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:18px}.hero-copy,.brand-photo,.catalog,.order,.footer-box{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(160deg,rgba(18,39,74,.98),rgba(8,20,43,.98));box-shadow:var(--shadow)}.hero-copy{padding:28px;display:flex;flex-direction:column;justify-content:center}.tag{display:inline-block;width:max-content;padding:8px 12px;border-radius:999px;border:1px solid rgba(214,168,79,.32);background:rgba(214,168,79,.12);color:var(--goldLight);font-size:.76rem;font-weight:bold;letter-spacing:.05em;text-transform:uppercase}.hero h1{font:700 clamp(2.5rem,5vw,5rem) Georgia,serif;line-height:.93;margin:17px 0 12px}.hero p{color:#d8dfec;max-width:53ch;margin:0}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}.gold-btn,.dark-btn,.buy-btn{display:inline-flex;align-items:center;justify-content:center;min-height:47px;padding:0 18px;border-radius:999px;border:0;font-weight:bold;cursor:pointer}.gold-btn,.buy-btn{background:linear-gradient(135deg,var(--gold),var(--goldLight));color:#241b0d}.dark-btn{background:#11284e;color:white;border:1px solid var(--line)}.brand-photo{overflow:hidden;min-height:320px;background:#0b1b36}.brand-photo img{width:100%;height:100%;object-fit:cover;display:block}.tabs-area{padding:0 0 20px}.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:13px}.tab{padding:11px 16px;border:1px solid var(--line);border-radius:999px;background:#0d2040;color:var(--muted);cursor:pointer}.tab.active{background:rgba(214,168,79,.16);border-color:rgba(214,168,79,.45);color:var(--goldLight)}.tab-content{display:none;padding:18px;border:1px solid var(--line);border-radius:20px;background:rgba(16,35,68,.7)}.tab-content.active{display:block}.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.benefit{padding:16px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.025)}.benefit strong{display:block;color:var(--goldLight);margin-bottom:6px}.benefit p{font-size:.92rem;color:var(--muted);margin:0}section.catalog-section{padding:0 0 22px}.catalog{padding:20px}.catalog-head{display:flex;justify-content:space-between;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:17px}.catalog h2,.order h2{font:700 2.25rem Georgia,serif;margin:0;color:var(--goldLight)}.catalog-head p{margin:4px 0 0;color:var(--muted)}.search{min-height:46px;padding:0 15px;border-radius:999px;background:#091a35;border:1px solid var(--line);color:white;min-width:240px}.chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:17px}.chip{padding:10px 14px;border-radius:999px;background:#0c1d3b;border:1px solid var(--line);color:var(--muted);cursor:pointer}.chip.active{background:rgba(214,168,79,.15);color:var(--goldLight);border-color:rgba(214,168,79,.45)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.product{overflow:hidden;border-radius:19px;border:1px solid var(--line);background:#0d2142}.gallery{height:235px;background:#091a35;position:relative}.gallery img.main-photo{width:100%;height:100%;object-fit:cover;display:none}.gallery img.main-photo.active{display:block}.no-image{height:100%;display:grid;place-items:center;color:var(--muted);font-size:.9rem}.thumbs{position:absolute;left:10px;right:10px;bottom:10px;display:flex;gap:7px;overflow-x:auto;padding:2px}.thumb{width:48px;height:48px;flex:0 0 48px;border-radius:9px;padding:0;border:2px solid transparent;overflow:hidden;background:#102344;cursor:pointer}.thumb.active{border-color:var(--goldLight)}.thumb img{display:block;width:100%;height:100%;object-fit:cover}.product-body{padding:16px}.price{color:var(--goldLight);font-size:1.2rem;font-weight:bold}.promotion{display:block;margin-top:4px;color:#fff1c8;font-size:.92rem;font-weight:bold}.promotion:empty{display:none}.product h3{margin:9px 0 7px;font-size:1.08rem}.product-description{display:none;margin:0 0 12px;color:var(--muted);font-size:.92rem}.product-description.show{display:block}.info-btn{display:inline-flex;align-items:center;gap:7px;width:max-content;padding:8px 11px;margin:0 0 12px;border:1px solid rgba(214,168,79,.42);border-radius:999px;background:rgba(214,168,79,.10);color:var(--goldLight);font-weight:bold;font-size:.82rem;cursor:pointer}.info-btn:hover{background:rgba(214,168,79,.22)}.info-icon{display:inline-grid;place-items:center;width:19px;height:19px;border-radius:50%;border:1px solid currentColor;font-family:Georgia;font-size:.9rem}.product-actions{display:flex;gap:9px;flex-wrap:wrap}.buy-btn{min-height:42px;padding:0 14px}.wa-small{display:inline-flex;align-items:center;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:#102749;color:white;font-weight:bold;font-size:.88rem}.empty{padding:24px;text-align:center;color:var(--muted);border:1px dashed rgba(214,168,79,.35);border-radius:18px}.order-section{padding:0 0 26px}.order{padding:20px;display:grid;grid-template-columns:.9fr 1.1fr;gap:20px}.order p{color:var(--muted)}.trust-banner{margin:14px 0;padding:15px 16px;border:1px solid rgba(214,168,79,.46);border-radius:15px;background:linear-gradient(135deg,rgba(214,168,79,.22),rgba(32,163,94,.14));color:#fff1c8;font-weight:bold}.trust-banner span{display:block;color:#d8dfec;font-size:.86rem;font-weight:normal;margin-top:4px}.field-note{font-size:.88rem;color:#d8dfec!important}.form{display:grid;gap:12px}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form input,.form select,.form textarea{width:100%;min-height:48px;border-radius:13px;border:1px solid var(--line);padding:12px 14px;background:#091a35;color:white}.form textarea{min-height:100px;resize:vertical}.float-wa{position:fixed;right:17px;bottom:17px;z-index:30;background:var(--green);padding:16px 20px;border-radius:999px;color:white;font-weight:bold;box-shadow:var(--shadow)}footer{padding-bottom:28px}.footer-box{padding:17px;display:flex;justify-content:space-between;gap:13px;flex-wrap:wrap}.footer-box p{color:var(--muted);margin:0}@media(max-width:900px){.hero-grid,.order{grid-template-columns:1fr}.grid,.benefits{grid-template-columns:1fr 1fr}.brand-photo{min-height:auto}}@media(max-width:590px){.nav a{display:none}.grid,.benefits,.row{grid-template-columns:1fr}.hero-copy{padding:22px}.brand-photo img{height:auto}.search{min-width:100%;width:100%}.float-wa{left:16px;right:16px;justify-content:center}.brand strong{font-size:1.45rem}}
-</style></head><body><header><div class="container bar"><a class="brand" href="#inicio"><div class="brand-icon">M</div><div><strong>MarAngel</strong><small>Store</small></div></a><nav class="nav"><a href="#catalogo">Catálogo</a><a href="#pedido">Pedido</a></nav></div></header><main class="container"><section class="hero" id="inicio"><div class="hero-grid"><div class="hero-copy"><span class="tag">Pago contra entrega • envío gratis</span><h1>MarAngel Store</h1><p>Compra con confianza y paga cuando recibas tu pedido. Ofrecemos envío gratis y atención directa por WhatsApp para confirmar cada compra de forma clara y segura.</p><div class="actions"><a class="gold-btn" href="#catalogo">Ver productos</a><a class="dark-btn" href="#pedido">Hacer pedido</a></div></div><div class="brand-photo"><img src="marca-marangel.jpg" alt="MarAngel Store"></div></div></section><section class="tabs-area"><div class="tabs"><button class="tab active" data-tab="beneficios">Beneficios</button><button class="tab" data-tab="envios">Envíos</button><button class="tab" data-tab="comprar">Cómo comprar</button></div><div class="tab-content active" id="beneficios"><div class="benefits"><article class="benefit"><strong>Paga al recibir</strong><p>Recibe tu pedido y paga al momento de recibirlo.</p></article><article class="benefit"><strong>Envío gratis</strong><p>Compra con mayor facilidad sin costo adicional de envío.</p></article><article class="benefit"><strong>Atención por WhatsApp</strong><p>Resolvemos tus preguntas de manera rápida y cercana.</p></article></div></div><div class="tab-content" id="envios"><div class="benefits"><article class="benefit"><strong>Confirmación directa</strong><p>Coordinamos contigo los detalles de tu entrega.</p></article><article class="benefit"><strong>Proceso simple</strong><p>Elige el producto y confirma tu pedido por WhatsApp.</p></article><article class="benefit"><strong>Soporte cercano</strong><p>Estamos disponibles para ayudarte antes de comprar.</p></article></div></div><div class="tab-content" id="comprar"><div class="benefits"><article class="benefit"><strong>1. Explora</strong><p>Revisa el catálogo y selecciona tu producto.</p></article><article class="benefit"><strong>2. Solicita</strong><p>Haz clic en comprar o llena el formulario.</p></article><article class="benefit"><strong>3. Confirma</strong><p>Te contactamos por WhatsApp para completar el pedido.</p></article></div></div></section><section class="catalog-section" id="catalogo"><div class="catalog"><div class="catalog-head"><div><h2>Catálogo</h2><p id="count">Cargando productos...</p></div><input class="search" id="search" type="search" placeholder="Buscar producto"></div><div class="chips" id="chips"></div><div class="grid" id="grid"></div><div class="empty" id="empty" hidden>No hay productos para mostrar con ese filtro.</div></div></section><section class="order-section" id="pedido"><div class="order"><div><h2>Confirma tu pedido</h2><div class="trust-banner">Paga al recibir + envío gratis<span>Tu pedido se confirma por WhatsApp. No necesitas pagar por adelantado.</span></div><p>Para confirmar tu pedido y crear la orden, por favor ayúdanos con estos datos.</p><p class="field-note">Los campos marcados con * son obligatorios. El correo electrónico es opcional.</p></div><form class="form" id="orderForm"><div class="row"><input name="nombresApellidos" placeholder="* Nombres y apellidos" required><input name="telefono" placeholder="* Número de teléfono" required></div><div class="row"><input name="provincia" placeholder="* Provincia (Ej.: Los Ríos)" required><input name="ciudad" placeholder="* Ciudad (Ej.: Buena Fe)" required></div><select name="producto" id="productSelect" required><option value="">* Selecciona un producto</option></select><textarea name="direccion" placeholder="* Dirección completa: 2 calles y referencia" required></textarea><input type="email" name="correo" placeholder="Correo electrónico (opcional)"><textarea name="observaciones" placeholder="Observaciones (opcional)"></textarea><button class="gold-btn" type="submit">Enviar pedido por WhatsApp</button></form></div></section></main><footer><div class="container footer-box"><p><strong style="color:#f2d28b">MarAngel Store</strong> · Paga al recibir y disfruta de envío gratis.</p><p>WhatsApp: +593 99 981 0097</p></div></footer><a class="float-wa" href="https://wa.me/593999810097?text=Hola,%20quiero%20informaci%C3%B3n%20de%20sus%20productos" target="_blank">WhatsApp</a><script>
-const PHONE='593999810097';let products=[],active='Todos';const esc=s=>String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));const grid=document.querySelector('#grid'),chips=document.querySelector('#chips'),search=document.querySelector('#search'),count=document.querySelector('#count'),empty=document.querySelector('#empty'),select=document.querySelector('#productSelect');async function loadProducts(){try{const r=await fetch('products.json?'+Date.now());products=await r.json()}catch(e){products=[]}render()}function render(){const cats=['Todos',...new Set(products.map(p=>p.categoria).filter(Boolean))];if(!cats.includes(active))active='Todos';chips.innerHTML=cats.map(c=>`<button class="chip ${c===active?'active':''}" data-cat="${esc(c)}">${esc(c)}</button>`).join('');const q=search.value.trim().toLowerCase();const list=products.filter(p=>(active==='Todos'||p.categoria===active)&&(`${p.nombre} ${p.categoria} ${p.descripcion}`.toLowerCase().includes(q)));count.textContent=`${list.length} producto${list.length===1?'':'s'}`;empty.hidden=list.length>0;grid.innerHTML=list.map(p=>`<article class="product"><div class="gallery">${(p.fotos||[]).length?(p.fotos||[]).map((f,i)=>`<img class="main-photo ${i===0?'active':''}" src="${f}" alt="${esc(p.nombre)}">`).join(''):'<div class="no-image">Producto sin fotografía</div>'}<div class="thumbs">${(p.fotos||[]).map((f,i)=>`<button class="thumb ${i===0?'active':''}" data-photo="${i}" aria-label="Ver foto ${i+1}"><img src="${f}" alt="Foto ${i+1}"></button>`).join('')}</div></div><div class="product-body"><div class="price">${esc(p.precio)}</div><span class="promotion">${p.promocion?'Promoción: '+esc(p.promocion):''}</span><h3>${esc(p.nombre)}</h3><button class="info-btn" type="button" data-info aria-expanded="false"><span class="info-icon">i</span> Info +</button><p class="product-description">${esc(p.descripcion)}</p><div class="product-actions"><a class="buy-btn" href="#pedido" data-buy="${esc(p.nombre)}">Comprar</a><a class="wa-small" target="_blank" href="https://wa.me/${PHONE}?text=${encodeURIComponent('Hola, quiero información del producto: '+p.nombre)}">WhatsApp</a></div></div></article>`).join('');select.innerHTML='<option value="">* Selecciona un producto</option>'+products.map(p=>`<option value="${esc(p.nombre)}">${esc(p.nombre)}</option>`).join('')}document.addEventListener('click',e=>{const tab=e.target.closest('.tab');if(tab){document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(x=>x.classList.remove('active'));tab.classList.add('active');document.querySelector('#'+tab.dataset.tab).classList.add('active')}const ch=e.target.closest('[data-cat]');if(ch){active=ch.dataset.cat;render()}const b=e.target.closest('[data-buy]');if(b)select.value=b.dataset.buy;const d=e.target.closest('[data-photo]');if(d){const box=d.closest('.gallery'),i=Number(d.dataset.photo);box.querySelectorAll('.main-photo').forEach((x,n)=>x.classList.toggle('active',n===i));box.querySelectorAll('.thumb').forEach((x,n)=>x.classList.toggle('active',n===i))}const info=e.target.closest('[data-info]');if(info){const desc=info.parentElement.querySelector('.product-description'),open=desc.classList.toggle('show');info.setAttribute('aria-expanded',open);info.innerHTML=open?'<span class="info-icon">i</span> Ocultar información':'<span class="info-icon">i</span> Info +' }});search.addEventListener('input',render);document.querySelector('#orderForm').addEventListener('submit',e=>{e.preventDefault();const d=new FormData(e.target);const msg=['Hola, quiero confirmar un pedido y crear la orden.','',`Nombres y apellidos: ${d.get('nombresApellidos')}`,`Número de teléfono: ${d.get('telefono')}`,`Provincia: ${d.get('provincia')}`,`Ciudad: ${d.get('ciudad')}`,`Dirección completa: ${d.get('direccion')}`,`Correo electrónico: ${d.get('correo')||'No proporcionado'}`,`Producto: ${d.get('producto')}`,`Observaciones: ${d.get('observaciones')||'Sin observaciones'}`].join('\n');window.open('https://wa.me/'+PHONE+'?text='+encodeURIComponent(msg),'_blank')});loadProducts();
-</script></body></html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MarAngel Store: compra fácil, promociones y atención directa por WhatsApp." />
+  <meta name="theme-color" content="#071329" />
+  <title>MarAngel Store | Compra fácil y segura</title>
+
+  <!-- Google Analytics 4: MarAngel Store -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VNDD3H6V0P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VNDD3H6V0P');
+  </script>
+
+  <style>
+    :root {
+      --navy: #071329;
+      --navy-soft: #0b1b38;
+      --card: #102544;
+      --card-hover: #142d53;
+      --line: rgba(255, 255, 255, 0.13);
+      --text: #ffffff;
+      --muted: #d0d8e7;
+      --gold: #d4a64f;
+      --gold-light: #f4d993;
+      --cream: #fff8e8;
+      --cream-text: #2a210f;
+      --green: #1ea463;
+      --green-dark: #117747;
+      --radius: 18px;
+      --shadow: 0 18px 48px rgba(0, 0, 0, 0.34);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      padding-bottom: 88px;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 17px;
+      line-height: 1.55;
+      background: linear-gradient(180deg, #06101f 0%, #0b1b38 48%, #071329 100%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--gold-light); outline-offset: 3px; }
+
+    .container { width: min(1080px, calc(100% - 24px)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 70;
+      border-bottom: 1px solid var(--line);
+      background: rgba(6, 16, 31, 0.93);
+      backdrop-filter: blur(14px);
+    }
+
+    .topbar-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand { display: flex; align-items: center; gap: 10px; }
+
+    .brand-symbol {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(244, 217, 147, 0.48);
+      border-radius: 13px;
+      color: var(--gold-light);
+      background: linear-gradient(145deg, #173b6e, #0b1b38);
+      font-family: Georgia, serif;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .brand strong { display: block; font-family: Georgia, serif; font-size: 22px; line-height: 0.95; }
+    .brand span { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    .nav-link {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 15px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--gold-light);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .hero { padding: 22px 0 12px; }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(22px, 5vw, 44px);
+      border: 1px solid rgba(244, 217, 147, 0.25);
+      border-radius: 25px;
+      background:
+        radial-gradient(circle at 90% 8%, rgba(212, 166, 79, 0.27), transparent 24%),
+        linear-gradient(135deg, #153766 0%, #0d2144 58%, #071329 100%);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card::after {
+      content: '';
+      position: absolute;
+      right: -90px;
+      bottom: -115px;
+      width: 300px;
+      height: 300px;
+      border: 1px solid rgba(244, 217, 147, 0.22);
+      border-radius: 50%;
+    }
+
+    .hero-badge {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      padding: 8px 12px;
+      border: 1px solid rgba(244, 217, 147, 0.42);
+      border-radius: 999px;
+      color: var(--gold-light);
+      background: rgba(212, 166, 79, 0.15);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    h1, h2, h3 { font-family: Georgia, 'Times New Roman', serif; }
+    h1 { position: relative; z-index: 1; margin: 14px 0 10px; font-size: clamp(36px, 7vw, 62px); line-height: 0.98; }
+    .hero p { position: relative; z-index: 1; max-width: 620px; margin: 0; color: #e4e9f3; font-size: 18px; }
+    .hero-actions { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+
+    .button {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      border: 0;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .button-gold { color: #2c210d; background: linear-gradient(135deg, var(--gold), var(--gold-light)); }
+    .button-dark { border: 1px solid var(--line); color: var(--text); background: rgba(255, 255, 255, 0.06); }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 14px 0;
+    }
+
+    .trust-item {
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .trust-item strong { display: block; color: var(--gold-light); font-size: 15px; }
+    .trust-item span { display: block; margin-top: 2px; color: var(--muted); font-size: 13px; }
+
+    .offer-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin: 15px 0;
+      padding: 16px;
+      border: 2px solid rgba(212, 166, 79, 0.7);
+      border-radius: 19px;
+      color: var(--cream-text);
+      background: linear-gradient(135deg, #fff9ea, #f5d995);
+      box-shadow: var(--shadow);
+    }
+
+    .offer-banner strong { display: block; font-size: 20px; line-height: 1.1; }
+    .offer-banner p { margin: 3px 0 0; font-size: 14px; }
+    .offer-banner small { display: block; margin-top: 3px; color: #665121; font-size: 11px; }
+
+    .offer-banner a {
+      flex-shrink: 0;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 15px;
+      border-radius: 999px;
+      color: #ffffff;
+      background: #0a2246;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .simple-info { padding: 0 0 12px; }
+
+    .simple-info details {
+      margin-bottom: 8px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: rgba(13, 29, 57, 0.8);
+    }
+
+    .simple-info summary { padding: 15px; color: var(--gold-light); cursor: pointer; font-size: 16px; font-weight: 800; }
+    .simple-info details p { margin: 0; padding: 0 15px 15px; color: var(--muted); font-size: 15px; }
+
+    .catalog-section { padding: 4px 0 22px; }
+
+    .catalog-card {
+      padding: 17px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(12, 28, 56, 0.93);
+      box-shadow: var(--shadow);
+    }
+
+    .catalog-heading { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .catalog-heading h2 { margin: 0; font-size: 35px; }
+    .catalog-heading p { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+
+    .search-input {
+      width: min(100%, 300px);
+      min-height: 50px;
+      padding: 0 15px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      color: var(--text);
+      background: #091a35;
+      font-size: 16px;
+    }
+
+    .category-list { display: flex; flex-wrap: wrap; gap: 9px; margin: 16px 0; }
+
+    .category-button {
+      min-height: 44px;
+      padding: 0 15px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .category-button.active { color: #2d220e; border-color: transparent; background: linear-gradient(135deg, var(--gold), var(--gold-light)); }
+
+    .product-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px; }
+
+    .product-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--card);
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+    }
+
+    .product-card:hover { transform: translateY(-2px); border-color: rgba(244, 217, 147, 0.45); background: var(--card-hover); }
+
+    .product-visual { position: relative; height: 230px; background: linear-gradient(135deg, #173c70, #091a35); }
+    .product-visual img { width: 100%; height: 100%; object-fit: cover; }
+    .image-placeholder { width: 100%; height: 100%; display: grid; place-items: center; color: #b3c0d6; font-size: 14px; }
+
+    .promotion-badge {
+      position: absolute;
+      top: 11px;
+      left: 11px;
+      display: none;
+      padding: 7px 10px;
+      border-radius: 999px;
+      color: #251b08;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .product-card.has-promotion .promotion-badge { display: block; }
+
+    .product-content { display: grid; gap: 9px; padding: 15px; }
+    .product-category { color: var(--gold-light); font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+    .product-content h3 { margin: 0; font-size: 19px; line-height: 1.18; }
+    .product-description { margin: 0; color: var(--muted); font-size: 14px; }
+    .price { color: var(--gold-light); font-size: 23px; font-weight: 900; }
+    .old-price { margin-left: 7px; color: #a8b5c9; font-size: 13px; text-decoration: line-through; }
+
+    .promotion-line {
+      display: none;
+      padding: 10px;
+      border: 1px solid rgba(244, 217, 147, 0.4);
+      border-radius: 11px;
+      color: #fff1c4;
+      background: rgba(212, 166, 79, 0.11);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .product-card.has-promotion .promotion-line { display: block; }
+    .product-actions { display: grid; grid-template-columns: 1fr; gap: 8px; }
+
+    .product-button {
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 14px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .product-button.buy { color: #2a1f0b; background: linear-gradient(135deg, var(--gold), var(--gold-light)); }
+    .product-button.chat { border: 1px solid var(--line); color: var(--text); background: #0a1932; }
+    .empty-message { padding: 25px; text-align: center; color: var(--muted); font-size: 16px; }
+
+    .order-section { padding: 0 0 25px; }
+
+    .order-card {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 20px;
+      padding: 20px;
+      border: 1px solid rgba(244, 217, 147, 0.24);
+      border-radius: 21px;
+      background: linear-gradient(135deg, #14325e, #0a1933);
+      box-shadow: var(--shadow);
+    }
+
+    .order-card h2 { margin: 0 0 9px; font-size: 34px; }
+    .order-card p { margin: 0; color: var(--muted); font-size: 16px; }
+    .order-points { display: grid; gap: 8px; margin-top: 16px; color: #edf1f8; font-size: 15px; }
+    .order-form { display: grid; gap: 11px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+    .order-form input, .order-form select, .order-form textarea {
+      width: 100%;
+      min-height: 52px;
+      padding: 12px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 13px;
+      color: var(--text);
+      background: #07172f;
+      font-size: 16px;
+    }
+
+    .order-form textarea { min-height: 95px; resize: vertical; }
+    .form-note { color: #c7d1e0; font-size: 12px; }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 13px;
+      bottom: 12px;
+      left: 13px;
+      z-index: 91;
+      min-height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      box-shadow: var(--shadow);
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .floating-offer {
+      position: fixed;
+      right: 13px;
+      bottom: 80px;
+      z-index: 92;
+      width: min(360px, calc(100% - 26px));
+      padding: 16px 42px 16px 16px;
+      border: 2px solid rgba(212, 166, 79, 0.74);
+      border-radius: 19px;
+      color: var(--cream-text);
+      background: linear-gradient(135deg, #fffaf0, #f1d28d);
+      box-shadow: var(--shadow);
+    }
+
+    .floating-offer.hidden { display: none; }
+    .floating-tag { display: inline-flex; padding: 5px 9px; border-radius: 999px; color: #6e4a11; background: rgba(110, 74, 17, 0.12); font-size: 10px; font-weight: 900; letter-spacing: 0.07em; }
+    .floating-offer strong { display: block; margin-top: 7px; font-size: 22px; line-height: 1.1; }
+    .floating-offer p { margin: 7px 0 6px; font-size: 14px; line-height: 1.35; }
+    .floating-offer small { display: block; color: #705c30; font-size: 11px; }
+    .offer-link { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; margin-top: 11px; padding: 0 15px; border-radius: 999px; color: #ffffff; background: #0a2145; font-size: 14px; font-weight: 900; }
+    .close-offer { position: absolute; top: 7px; right: 7px; width: 30px; height: 30px; border: 0; border-radius: 50%; color: #49330d; background: rgba(77, 52, 10, 0.1); font-size: 23px; line-height: 1; }
+
+    footer { padding: 0 0 15px; }
+    .footer { color: var(--muted); font-size: 12px; text-align: center; }
+
+    @media (max-width: 860px) {
+      .trust-grid, .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .order-card { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .nav-link { display: none; }
+      .hero { padding-top: 15px; }
+      .hero p { font-size: 17px; }
+      .trust-grid, .product-grid, .form-row { grid-template-columns: 1fr; }
+      .product-visual { height: 255px; }
+      .product-content h3 { font-size: 21px; }
+      .product-description { font-size: 16px; }
+      .catalog-card { padding: 13px; }
+      .offer-banner { align-items: flex-start; flex-direction: column; }
+      .offer-banner a { width: 100%; justify-content: center; }
+      .floating-offer { bottom: 80px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#inicio" aria-label="Inicio de MarAngel Store">
+        <span class="brand-symbol">M</span>
+        <span>
+          <strong>MarAngel</strong>
+          <span>Store</span>
+        </span>
+      </a>
+      <a class="nav-link" href="#pedido">Hacer pedido</a>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <span class="hero-badge">Compra fácil · Atención directa</span>
+          <h1>Comprar es fácil y seguro</h1>
+          <p>Elige el producto, toca “Pedir por WhatsApp” y nosotros te ayudamos a confirmar tu pedido paso a paso.</p>
+          <div class="hero-actions">
+            <a class="button button-gold" href="#catalogo" data-track="ver_productos">Ver productos</a>
+            <a class="button button-dark" href="https://wa.me/593999810097?text=Hola,%20necesito%20ayuda%20para%20hacer%20un%20pedido" target="_blank" rel="noopener noreferrer" data-track="ayuda_whatsapp">Necesito ayuda</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="trust-grid">
+        <article class="trust-item"><strong>✓ Pago contra entrega</strong><span>Paga al recibir, cuando esté disponible para tu zona.</span></article>
+        <article class="trust-item"><strong>✓ Atención por WhatsApp</strong><span>Te ayudamos si tienes dudas antes de pedir.</span></article>
+        <article class="trust-item"><strong>✓ Pedido confirmado</strong><span>Verificamos datos antes de coordinar el envío.</span></article>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="offer-banner">
+        <div>
+          <strong>Oferta especial: 10% de descuento</strong>
+          <p>Aplica en productos que tengan promoción por cantidad.</p>
+          <small>No aplica para unidades individuales.</small>
+        </div>
+        <a id="viewPromotionsTop" href="#catalogo" data-track="ver_ofertas">Ver ofertas</a>
+      </div>
+    </section>
+
+    <section class="simple-info">
+      <div class="container">
+        <details>
+          <summary>¿Cómo compro?</summary>
+          <p>1. Elige un producto. 2. Presiona “Pedir por WhatsApp”. 3. Confirma tu nombre, ciudad y dirección. 4. Coordinamos la entrega contigo.</p>
+        </details>
+        <details>
+          <summary>¿Cómo funcionan las promociones?</summary>
+          <p>Los productos que tengan una promoción visible participan en la oferta web. El descuento del 10% se confirma por WhatsApp y aplica únicamente a promociones por cantidad.</p>
+        </details>
+        <details>
+          <summary>¿Necesitas ayuda?</summary>
+          <p>Presiona el botón verde de WhatsApp y escríbenos. Te ayudaremos a elegir y confirmar tu pedido.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="catalogo" class="catalog-section">
+      <div class="container">
+        <div class="catalog-card">
+          <div class="catalog-heading">
+            <div>
+              <h2>Productos</h2>
+              <p id="resultsText">Cargando productos…</p>
+            </div>
+            <input id="searchInput" class="search-input" type="search" placeholder="Escribe el nombre del producto" aria-label="Buscar producto" />
+          </div>
+          <div id="categoryList" class="category-list"></div>
+          <div id="productGrid" class="product-grid"></div>
+          <div id="emptyMessage" class="empty-message" hidden>No encontramos productos con ese filtro.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pedido" class="order-section">
+      <div class="container">
+        <div class="order-card">
+          <div>
+            <h2>Confirma tu pedido</h2>
+            <p>Llena estos datos y se abrirá WhatsApp. Nosotros confirmaremos contigo el producto, el precio y la entrega.</p>
+            <div class="order-points">
+              <span>✓ No necesitas pagar en esta página.</span>
+              <span>✓ Te atendemos directamente por WhatsApp.</span>
+              <span>✓ Tus datos se usan solo para gestionar el pedido.</span>
+            </div>
+          </div>
+          <form id="orderForm" class="order-form">
+            <div class="form-row">
+              <input name="nombre" required autocomplete="name" placeholder="Escribe tu nombre completo" />
+              <input name="telefono" required autocomplete="tel" inputmode="tel" placeholder="Escribe tu teléfono" />
+            </div>
+            <div class="form-row">
+              <input name="ciudad" required autocomplete="address-level2" placeholder="Ciudad donde recibes" />
+              <select id="productSelect" name="producto" required></select>
+            </div>
+            <input name="direccion" required autocomplete="street-address" placeholder="Dirección y referencia para entregar" />
+            <textarea name="observaciones" placeholder="Escribe aquí un detalle adicional (opcional)"></textarea>
+            <span class="form-note">Al tocar el botón se abrirá WhatsApp con tu información.</span>
+            <button class="button button-gold" type="submit" data-track="enviar_formulario">Enviar mi pedido por WhatsApp</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside id="floatingOffer" class="floating-offer" aria-label="Oferta especial">
+    <button id="closeOffer" class="close-offer" type="button" aria-label="Cerrar oferta">×</button>
+    <span class="floating-tag">OFERTA ESPECIAL WEB</span>
+    <strong>10% OFF en promociones</strong>
+    <p>Compra un producto con promoción por cantidad y solicita tu descuento.</p>
+    <small>No aplica a unidades individuales.</small>
+    <a id="viewPromotionsFloat" class="offer-link" href="#catalogo" data-track="ver_ofertas_flotante">Ver ofertas</a>
+  </aside>
+
+  <a class="whatsapp-float" href="https://wa.me/593999810097?text=Hola,%20necesito%20ayuda%20para%20hacer%20un%20pedido" target="_blank" rel="noopener noreferrer" data-track="whatsapp_flotante">Hablar por WhatsApp</a>
+
+  <footer>
+    <div class="container footer">MarAngel Store · Atención directa por WhatsApp: +593 99 981 0097</div>
+  </footer>
+
+  <script>
+    const WHATSAPP_NUMBER = '593999810097';
+
+    const state = {
+      products: [],
+      activeCategory: 'Todos'
+    };
+
+    const productGrid = document.getElementById('productGrid');
+    const categoryList = document.getElementById('categoryList');
+    const resultsText = document.getElementById('resultsText');
+    const emptyMessage = document.getElementById('emptyMessage');
+    const searchInput = document.getElementById('searchInput');
+    const productSelect = document.getElementById('productSelect');
+    const orderForm = document.getElementById('orderForm');
+    const floatingOffer = document.getElementById('floatingOffer');
+
+    function track(eventName, parameters = {}) {
+      if (typeof gtag === 'function') {
+        gtag('event', eventName, parameters);
+      }
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? '').replace(/[&<>"']/g, (character) => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      })[character]);
+    }
+
+    /* Compatible con tu products.json y tu admin actual: no exige recargar productos. */
+    function getPromotion(product) {
+      const fields = ['promocion', 'promotion', 'oferta', 'precioPromocional', 'precio_promo', 'combo', 'precioOferta'];
+      for (const field of fields) {
+        const value = product?.[field];
+        if (value !== undefined && value !== null && String(value).trim() !== '') return String(value).trim();
+      }
+      return '';
+    }
+
+    function getName(product) { return product?.nombre ?? product?.name ?? 'Producto'; }
+    function getCategory(product) { return product?.categoria ?? product?.category ?? 'Productos'; }
+    function getPrice(product) { return product?.precio ?? product?.price ?? product?.precioNormal ?? 'A confirmar'; }
+    function getOldPrice(product) { return product?.precioAnterior ?? product?.oldPrice ?? ''; }
+    function getDescription(product) { return product?.descripcion ?? product?.description ?? product?.detalle ?? 'Consulta disponibilidad por WhatsApp.'; }
+
+    function getPhotos(product) {
+      const candidates = [product?.fotos, product?.imagenes, product?.images, product?.foto];
+      for (const item of candidates) {
+        if (Array.isArray(item)) return item.filter(Boolean);
+        if (typeof item === 'string' && item.trim()) return [item.trim()];
+      }
+      return [];
+    }
+
+    function getCategories() {
+      return ['Todos', ...new Set(state.products.map(getCategory).filter(Boolean))];
+    }
+
+    function getFilteredProducts() {
+      const search = searchInput.value.trim().toLowerCase();
+      return state.products.filter((product) => {
+        const categoryMatch = state.activeCategory === 'Todos' || getCategory(product) === state.activeCategory;
+        const text = `${getName(product)} ${getCategory(product)} ${getDescription(product)} ${getPromotion(product)}`.toLowerCase();
+        return categoryMatch && text.includes(search);
+      });
+    }
+
+    function waUrl(message) {
+      return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    }
+
+    function messageFor(product, formData) {
+      const promotion = getPromotion(product);
+      const lines = [
+        'Hola, quiero realizar un pedido.',
+        '',
+        `Producto: ${getName(product)}`,
+        `Precio: ${getPrice(product)}`
+      ];
+
+      if (promotion) {
+        lines.push(`Promoción: ${promotion}`);
+        lines.push('Descuento web solicitado: 10% en promoción por cantidad');
+      }
+
+      if (formData) {
+        lines.push(
+          '',
+          `Nombre: ${formData.nombre}`,
+          `Teléfono: ${formData.telefono}`,
+          `Ciudad: ${formData.ciudad}`,
+          `Dirección: ${formData.direccion}`,
+          `Observaciones: ${formData.observaciones || 'Sin observaciones'}`
+        );
+      }
+
+      return lines.join('\n');
+    }
+
+    function renderCategories() {
+      const categories = getCategories();
+      if (!categories.includes(state.activeCategory)) state.activeCategory = 'Todos';
+
+      categoryList.innerHTML = categories.map((category) => `
+        <button class="category-button ${category === state.activeCategory ? 'active' : ''}" type="button" data-category="${escapeHtml(category)}">
+          ${escapeHtml(category)}
+        </button>
+      `).join('');
+    }
+
+    function renderProducts() {
+      const items = getFilteredProducts();
+      resultsText.textContent = `${items.length} producto${items.length === 1 ? '' : 's'} disponible${items.length === 1 ? '' : 's'}`;
+      emptyMessage.hidden = items.length > 0;
+
+      productGrid.innerHTML = items.map((product) => {
+        const promotion = getPromotion(product);
+        const photo = getPhotos(product)[0];
+        const photoHtml = photo
+          ? `<img src="${escapeHtml(photo)}" alt="${escapeHtml(getName(product))}" loading="lazy" />`
+          : '<div class="image-placeholder">Foto del producto</div>';
+
+        return `
+          <article class="product-card ${promotion ? 'has-promotion' : ''}">
+            <div class="product-visual">
+              <span class="promotion-badge">OFERTA ESPECIAL</span>
+              ${photoHtml}
+            </div>
+            <div class="product-content">
+              <span class="product-category">${escapeHtml(getCategory(product))}</span>
+              <div><span class="price">${escapeHtml(getPrice(product))}</span><span class="old-price">${escapeHtml(getOldPrice(product))}</span></div>
+              <h3>${escapeHtml(getName(product))}</h3>
+              <p class="product-description">${escapeHtml(getDescription(product))}</p>
+              <div class="promotion-line">Promoción: ${escapeHtml(promotion)} · 10% OFF web</div>
+              <div class="product-actions">
+                <a class="product-button buy" href="#pedido" data-product="${escapeHtml(getName(product))}">Pedir por WhatsApp</a>
+                <a class="product-button chat" href="${waUrl(messageFor(product))}" target="_blank" rel="noopener noreferrer" data-product-chat="${escapeHtml(getName(product))}">Tengo una pregunta</a>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      productSelect.innerHTML = '<option value="">Selecciona el producto que quieres</option>' + state.products.map((product) => `
+        <option value="${escapeHtml(getName(product))}">${escapeHtml(getName(product))} — ${escapeHtml(getPrice(product))}</option>
+      `).join('');
+    }
+
+    function renderAll() {
+      renderCategories();
+      renderProducts();
+    }
+
+    function focusPromotions() {
+      state.activeCategory = 'Todos';
+      searchInput.value = '';
+      renderAll();
+      track('ver_ofertas', { event_category: 'Promociones' });
+      const firstPromotion = document.querySelector('.product-card.has-promotion');
+      if (firstPromotion) firstPromotion.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    document.addEventListener('click', (event) => {
+      const category = event.target.closest('[data-category]');
+      if (category) {
+        state.activeCategory = category.dataset.category;
+        track('seleccionar_categoria', { event_category: 'Catálogo', categoria: state.activeCategory });
+        renderAll();
+      }
+
+      const product = event.target.closest('[data-product]');
+      if (product) {
+        productSelect.value = product.dataset.product;
+        track('seleccionar_producto', { event_category: 'Producto', producto: product.dataset.product });
+      }
+
+      const chatProduct = event.target.closest('[data-product-chat]');
+      if (chatProduct) {
+        track('clic_whatsapp_producto', { event_category: 'WhatsApp', producto: chatProduct.dataset.productChat });
+      }
+
+      const tracked = event.target.closest('[data-track]');
+      if (tracked) {
+        track(tracked.dataset.track, { event_category: 'Interacción', etiqueta: tracked.textContent.trim() });
+      }
+    });
+
+    searchInput.addEventListener('input', () => {
+      renderProducts();
+    });
+
+    document.getElementById('closeOffer').addEventListener('click', () => {
+      floatingOffer.classList.add('hidden');
+      track('cerrar_oferta_flotante', { event_category: 'Promociones' });
+    });
+
+    document.getElementById('viewPromotionsFloat').addEventListener('click', focusPromotions);
+    document.getElementById('viewPromotionsTop').addEventListener('click', focusPromotions);
+
+    orderForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!orderForm.checkValidity()) {
+        orderForm.reportValidity();
+        return;
+      }
+
+      const form = new FormData(orderForm);
+      const selectedProduct = state.products.find((product) => getName(product) === form.get('producto'));
+      const data = {
+        nombre: form.get('nombre').trim(),
+        telefono: form.get('telefono').trim(),
+        ciudad: form.get('ciudad').trim(),
+        direccion: form.get('direccion').trim(),
+        observaciones: form.get('observaciones').trim()
+      };
+
+      const fallback = { nombre: form.get('producto'), precio: 'A confirmar' };
+      track('formulario_pedido_enviado', {
+        event_category: 'Pedido',
+        producto: form.get('producto')
+      });
+      window.open(waUrl(messageFor(selectedProduct || fallback, data)), '_blank', 'noopener,noreferrer');
+    });
+
+    async function loadProducts() {
+      try {
+        const response = await fetch('products.json', { cache: 'no-store' });
+        if (!response.ok) throw new Error('Archivo no disponible');
+        const data = await response.json();
+        state.products = Array.isArray(data) ? data : [];
+        track('catalogo_cargado', { event_category: 'Catálogo', cantidad_productos: state.products.length });
+      } catch (error) {
+        state.products = [];
+        resultsText.textContent = 'No se pudieron cargar los productos.';
+        track('error_catalogo', { event_category: 'Error' });
+      }
+      renderAll();
+    }
+
+    setTimeout(() => {
+      floatingOffer.classList.remove('hidden');
+      track('oferta_flotante_mostrada', { event_category: 'Promociones' });
+    }, 1800);
+
+    loadProducts();
+  </script>
+</body>
+</html>
