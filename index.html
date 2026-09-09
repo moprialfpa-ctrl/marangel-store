@@ -5,6 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="MarAngel Store: compra fácil, promociones, galería de productos y pedidos por WhatsApp." />
   <meta name="theme-color" content="#071329" />
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1591194662485391');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1591194662485391&ev=PageView&noscript=1"
+    />
+  </noscript>
+  <!-- End Meta Pixel Code -->
+
   <title>MarAngel Store | Compra fácil y segura</title>
 
   <!-- Google Analytics 4: MarAngel Store -->
@@ -139,7 +160,6 @@
     .offer-link { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; margin-top: 11px; padding: 0 15px; border-radius: 999px; color: #ffffff; background: #0a2145; font-size: 14px; font-weight: 900; }
     .close-offer { position: absolute; top: 7px; right: 7px; width: 30px; height: 30px; border: 0; border-radius: 50%; color: #49330d; background: rgba(77, 52, 10, 0.1); font-size: 23px; line-height: 1; }
 
-    /* Info+ mantiene únicamente la descripción larga. */
     .info-modal, .order-modal { position: fixed; inset: 0; z-index: 130; display: none; align-items: center; justify-content: center; padding: 16px; background: rgba(2, 8, 20, 0.78); }
     .info-modal.open, .order-modal.open { display: flex; }
     .modal-inner { position: relative; width: min(540px, 100%); }
@@ -148,7 +168,6 @@
     .info-modal-card p { margin: 0; white-space: pre-line; color: #edf1f8; font-size: 16px; }
     .modal-close { position: absolute; top: 13px; right: 13px; z-index: 2; width: 38px; height: 38px; border: 1px solid var(--line); border-radius: 50%; color: var(--text); background: rgba(255, 255, 255, 0.09); font-size: 26px; line-height: 1; }
 
-    /* NUEVO: formulario flotante para pedir el producto seleccionado. */
     .selected-product-box { margin: 0 0 15px; padding: 13px; border: 1px solid rgba(244, 217, 147, 0.34); border-radius: 14px; background: rgba(212, 166, 79, 0.10); }
     .selected-product-box span { display: block; color: #cfd8e8; font-size: 12px; }
     .selected-product-box strong { display: block; margin-top: 2px; color: var(--gold-light); font-family: Georgia, serif; font-size: 20px; line-height: 1.18; }
@@ -277,7 +296,6 @@
     <a id="viewPromotionsFloat" class="offer-link" href="#catalogo" data-track="ver_ofertas_flotante">Ver ofertas</a>
   </aside>
 
-  <!-- Modal Info+: solo la descripción completa -->
   <div id="infoModal" class="info-modal" aria-hidden="true">
     <div class="modal-inner">
       <button id="closeInfo" class="modal-close" type="button" aria-label="Cerrar información">×</button>
@@ -288,7 +306,6 @@
     </div>
   </div>
 
-  <!-- NUEVO: Modal de compra con producto ya seleccionado -->
   <div id="orderModal" class="order-modal" aria-hidden="true">
     <div class="modal-inner">
       <button id="closeOrder" class="modal-close" type="button" aria-label="Cerrar formulario">×</button>
@@ -344,13 +361,16 @@
       if (typeof gtag === 'function') gtag('event', eventName, parameters);
     }
 
+    function metaTrack(eventName, parameters = {}) {
+      if (typeof fbq === 'function') fbq('track', eventName, parameters);
+    }
+
     function escapeHtml(value) {
       return String(value ?? '').replace(/[&<>"']/g, (character) => ({
         '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
       })[character]);
     }
 
-    /* Compatible con tu products.json y con tu admin actual. */
     function getPromotion(product) {
       const fields = ['promocion', 'promotion', 'oferta', 'precioPromocional', 'precio_promo', 'combo', 'precioOferta'];
       for (const field of fields) {
@@ -365,6 +385,12 @@
     function getPrice(product) { return product?.precio ?? product?.price ?? product?.precioNormal ?? 'A confirmar'; }
     function getOldPrice(product) { return product?.precioAnterior ?? product?.oldPrice ?? ''; }
     function getFullDescription(product) { return product?.detalle ?? product?.descripcionCompleta ?? product?.fullDescription ?? product?.descripcion ?? 'No hay información adicional para este producto.'; }
+
+    function getMetaValue(product) {
+      const rawPrice = String(getPrice(product));
+      const normalized = rawPrice.replace(/[^\d.,]/g, '').replace(/\.(?=.*\.)/g, '').replace(',', '.');
+      return Number(normalized) || 0;
+    }
 
     function getPhotos(product) {
       const candidates = [product?.fotos, product?.imagenes, product?.images, product?.foto];
@@ -461,6 +487,13 @@
       document.body.classList.add('modal-open');
       document.getElementById('closeInfo').focus();
       track('abrir_info_producto', { event_category: 'Producto', producto: productName });
+      metaTrack('ViewContent', {
+        content_name: getName(product),
+        content_category: getCategory(product),
+        content_type: 'product',
+        value: getMetaValue(product),
+        currency: 'USD'
+      });
     }
 
     function closeInfo() {
@@ -482,6 +515,14 @@
       document.body.classList.add('modal-open');
       floatingOrderForm.elements.nombre.focus();
       track('abrir_formulario_producto', { event_category: 'Pedido', producto: productName });
+      metaTrack('InitiateCheckout', {
+        content_name: getName(product),
+        content_category: getCategory(product),
+        content_type: 'product',
+        value: getMetaValue(product),
+        currency: 'USD',
+        num_items: 1
+      });
     }
 
     function closeOrder() {
@@ -570,6 +611,13 @@
       };
 
       track('formulario_pedido_enviado', { event_category: 'Pedido', producto: getName(state.selectedProduct) });
+      metaTrack('Lead', {
+        content_name: getName(state.selectedProduct),
+        content_category: getCategory(state.selectedProduct),
+        content_type: 'product',
+        value: getMetaValue(state.selectedProduct),
+        currency: 'USD'
+      });
       window.open(waUrl(messageFor(state.selectedProduct, data)), '_blank', 'noopener,noreferrer');
       closeOrder();
     });
