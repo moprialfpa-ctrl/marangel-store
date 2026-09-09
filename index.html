@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="MarAngel Store: compra fácil, promociones, galería de productos y atención directa por WhatsApp." />
+  <meta name="description" content="MarAngel Store: compra fácil, promociones, galería de productos y pedidos por WhatsApp." />
   <meta name="theme-color" content="#071329" />
   <title>MarAngel Store | Compra fácil y segura</title>
 
@@ -48,106 +48,30 @@
       background: linear-gradient(180deg, #06101f 0%, #0b1b38 48%, #071329 100%);
     }
 
+    body.modal-open { overflow: hidden; }
     a { color: inherit; text-decoration: none; }
     button, input, select, textarea { font: inherit; }
     button { cursor: pointer; }
     button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--gold-light); outline-offset: 3px; }
     .container { width: min(1080px, calc(100% - 24px)); margin: 0 auto; }
 
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 70;
-      border-bottom: 1px solid var(--line);
-      background: rgba(6, 16, 31, 0.93);
-      backdrop-filter: blur(14px);
-    }
-
-    .topbar-inner {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
+    .topbar { position: sticky; top: 0; z-index: 70; border-bottom: 1px solid var(--line); background: rgba(6, 16, 31, 0.93); backdrop-filter: blur(14px); }
+    .topbar-inner { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
     .brand { display: flex; align-items: center; gap: 10px; }
-    .brand-symbol {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(244, 217, 147, 0.48);
-      border-radius: 13px;
-      color: var(--gold-light);
-      background: linear-gradient(145deg, #173b6e, #0b1b38);
-      font-family: Georgia, serif;
-      font-size: 24px;
-      font-weight: 700;
-    }
+    .brand-symbol { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(244, 217, 147, 0.48); border-radius: 13px; color: var(--gold-light); background: linear-gradient(145deg, #173b6e, #0b1b38); font-family: Georgia, serif; font-size: 24px; font-weight: 700; }
     .brand strong { display: block; font-family: Georgia, serif; font-size: 22px; line-height: 0.95; }
     .brand span { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
-    .nav-link {
-      min-height: 46px;
-      display: inline-flex;
-      align-items: center;
-      padding: 0 15px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--gold-light);
-      font-size: 14px;
-      font-weight: 800;
-    }
+    .nav-link { min-height: 46px; display: inline-flex; align-items: center; padding: 0 15px; border: 1px solid var(--line); border-radius: 999px; color: var(--gold-light); font-size: 14px; font-weight: 800; }
 
     .hero { padding: 22px 0 12px; }
-    .hero-card {
-      position: relative;
-      overflow: hidden;
-      padding: clamp(22px, 5vw, 44px);
-      border: 1px solid rgba(244, 217, 147, 0.25);
-      border-radius: 25px;
-      background:
-        radial-gradient(circle at 90% 8%, rgba(212, 166, 79, 0.27), transparent 24%),
-        linear-gradient(135deg, #153766 0%, #0d2144 58%, #071329 100%);
-      box-shadow: var(--shadow);
-    }
-    .hero-card::after {
-      content: '';
-      position: absolute;
-      right: -90px;
-      bottom: -115px;
-      width: 300px;
-      height: 300px;
-      border: 1px solid rgba(244, 217, 147, 0.22);
-      border-radius: 50%;
-    }
-    .hero-badge {
-      position: relative;
-      z-index: 1;
-      display: inline-flex;
-      padding: 8px 12px;
-      border: 1px solid rgba(244, 217, 147, 0.42);
-      border-radius: 999px;
-      color: var(--gold-light);
-      background: rgba(212, 166, 79, 0.15);
-      font-size: 12px;
-      font-weight: 800;
-    }
+    .hero-card { position: relative; overflow: hidden; padding: clamp(22px, 5vw, 44px); border: 1px solid rgba(244, 217, 147, 0.25); border-radius: 25px; background: radial-gradient(circle at 90% 8%, rgba(212, 166, 79, 0.27), transparent 24%), linear-gradient(135deg, #153766 0%, #0d2144 58%, #071329 100%); box-shadow: var(--shadow); }
+    .hero-card::after { content: ''; position: absolute; right: -90px; bottom: -115px; width: 300px; height: 300px; border: 1px solid rgba(244, 217, 147, 0.22); border-radius: 50%; }
+    .hero-badge { position: relative; z-index: 1; display: inline-flex; padding: 8px 12px; border: 1px solid rgba(244, 217, 147, 0.42); border-radius: 999px; color: var(--gold-light); background: rgba(212, 166, 79, 0.15); font-size: 12px; font-weight: 800; }
     h1, h2, h3 { font-family: Georgia, 'Times New Roman', serif; }
     h1 { position: relative; z-index: 1; margin: 14px 0 10px; font-size: clamp(36px, 7vw, 62px); line-height: 0.98; }
     .hero p { position: relative; z-index: 1; max-width: 620px; margin: 0; color: #e4e9f3; font-size: 18px; }
     .hero-actions { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-    .button {
-      min-height: 52px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 20px;
-      border: 0;
-      border-radius: 999px;
-      font-size: 16px;
-      font-weight: 800;
-    }
+    .button { min-height: 52px; display: inline-flex; align-items: center; justify-content: center; padding: 0 20px; border: 0; border-radius: 999px; font-size: 16px; font-weight: 800; }
     .button-gold { color: #2c210d; background: linear-gradient(135deg, var(--gold), var(--gold-light)); }
     .button-dark { border: 1px solid var(--line); color: var(--text); background: rgba(255, 255, 255, 0.06); }
 
@@ -156,19 +80,7 @@
     .trust-item strong { display: block; color: var(--gold-light); font-size: 15px; }
     .trust-item span { display: block; margin-top: 2px; color: var(--muted); font-size: 13px; }
 
-    .offer-banner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      margin: 15px 0;
-      padding: 16px;
-      border: 2px solid rgba(212, 166, 79, 0.7);
-      border-radius: 19px;
-      color: var(--cream-text);
-      background: linear-gradient(135deg, #fff9ea, #f5d995);
-      box-shadow: var(--shadow);
-    }
+    .offer-banner { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 15px 0; padding: 16px; border: 2px solid rgba(212, 166, 79, 0.7); border-radius: 19px; color: var(--cream-text); background: linear-gradient(135deg, #fff9ea, #f5d995); box-shadow: var(--shadow); }
     .offer-banner strong { display: block; font-size: 20px; line-height: 1.1; }
     .offer-banner p { margin: 3px 0 0; font-size: 14px; }
     .offer-banner small { display: block; margin-top: 3px; color: #665121; font-size: 11px; }
@@ -179,7 +91,7 @@
     .simple-info summary { padding: 15px; color: var(--gold-light); cursor: pointer; font-size: 16px; font-weight: 800; }
     .simple-info details p { margin: 0; padding: 0 15px 15px; color: var(--muted); font-size: 15px; }
 
-    .catalog-section { padding: 4px 0 22px; }
+    .catalog-section { padding: 4px 0 25px; }
     .catalog-card { padding: 17px; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(12, 28, 56, 0.93); box-shadow: var(--shadow); }
     .catalog-heading { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     .catalog-heading h2 { margin: 0; font-size: 35px; }
@@ -193,8 +105,7 @@
     .product-card { overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: var(--card); transition: transform 160ms ease, border-color 160ms ease, background 160ms ease; }
     .product-card:hover { transform: translateY(-2px); border-color: rgba(244, 217, 147, 0.45); background: var(--card-hover); }
 
-    /* GALERÍA: las cuatro fotos se mantienen disponibles en la tarjeta */
-    .product-gallery { position: relative; height: 230px; background: linear-gradient(135deg, #173c70, #091a35); overflow: hidden; }
+    .product-gallery { position: relative; height: 230px; overflow: hidden; background: linear-gradient(135deg, #173c70, #091a35); }
     .gallery-photo { width: 100%; height: 100%; object-fit: cover; display: none; }
     .gallery-photo.active { display: block; }
     .image-placeholder { width: 100%; height: 100%; display: grid; place-items: center; color: #b3c0d6; font-size: 14px; }
@@ -202,7 +113,6 @@
     .gallery-dot { width: 13px; height: 13px; padding: 0; border: 2px solid rgba(255, 255, 255, 0.86); border-radius: 50%; background: rgba(6, 16, 31, 0.58); }
     .gallery-dot.active { border-color: var(--gold-light); background: var(--gold); }
     .photo-counter { position: absolute; top: 11px; right: 11px; padding: 5px 8px; border-radius: 999px; color: #ffffff; background: rgba(6, 16, 31, 0.74); font-size: 11px; font-weight: 800; }
-
     .promotion-badge { position: absolute; top: 11px; left: 11px; z-index: 2; display: none; padding: 7px 10px; border-radius: 999px; color: #251b08; background: linear-gradient(135deg, var(--gold), var(--gold-light)); font-size: 11px; font-weight: 900; }
     .product-card.has-promotion .promotion-badge { display: block; }
 
@@ -213,27 +123,13 @@
     .old-price { margin-left: 7px; color: #a8b5c9; font-size: 13px; text-decoration: line-through; }
     .promotion-line { display: none; padding: 10px; border: 1px solid rgba(244, 217, 147, 0.4); border-radius: 11px; color: #fff1c4; background: rgba(212, 166, 79, 0.11); font-size: 14px; font-weight: 800; }
     .product-card.has-promotion .promotion-line { display: block; }
-
-    /* Todo queda visible salvo la descripción larga, que se abre con Info+ */
     .product-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .product-button { min-height: 50px; display: flex; align-items: center; justify-content: center; padding: 0 11px; border-radius: 999px; font-size: 14px; font-weight: 900; text-align: center; }
+    .product-button { min-height: 50px; display: flex; align-items: center; justify-content: center; padding: 0 11px; border: 0; border-radius: 999px; font-size: 14px; font-weight: 900; text-align: center; }
     .product-button.buy { color: #2a1f0b; background: linear-gradient(135deg, var(--gold), var(--gold-light)); }
     .product-button.info { border: 1px solid var(--line); color: var(--text); background: #0a1932; }
     .empty-message { padding: 25px; text-align: center; color: var(--muted); font-size: 16px; }
 
-    .order-section { padding: 0 0 25px; }
-    .order-card { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 20px; padding: 20px; border: 1px solid rgba(244, 217, 147, 0.24); border-radius: 21px; background: linear-gradient(135deg, #14325e, #0a1933); box-shadow: var(--shadow); }
-    .order-card h2 { margin: 0 0 9px; font-size: 34px; }
-    .order-card p { margin: 0; color: var(--muted); font-size: 16px; }
-    .order-points { display: grid; gap: 8px; margin-top: 16px; color: #edf1f8; font-size: 15px; }
-    .order-form { display: grid; gap: 11px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .order-form input, .order-form select, .order-form textarea { width: 100%; min-height: 52px; padding: 12px 14px; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 13px; color: var(--text); background: #07172f; font-size: 16px; }
-    .order-form textarea { min-height: 95px; resize: vertical; }
-    .form-note { color: #c7d1e0; font-size: 12px; }
-
     .whatsapp-float { position: fixed; right: 13px; bottom: 12px; left: 13px; z-index: 91; min-height: 56px; display: flex; align-items: center; justify-content: center; border-radius: 999px; color: #ffffff; background: linear-gradient(135deg, var(--green), var(--green-dark)); box-shadow: var(--shadow); font-size: 17px; font-weight: 900; }
-
     .floating-offer { position: fixed; right: 13px; bottom: 80px; z-index: 92; width: min(360px, calc(100% - 26px)); padding: 16px 42px 16px 16px; border: 2px solid rgba(212, 166, 79, 0.74); border-radius: 19px; color: var(--cream-text); background: linear-gradient(135deg, #fffaf0, #f1d28d); box-shadow: var(--shadow); }
     .floating-offer.hidden { display: none; }
     .floating-tag { display: inline-flex; padding: 5px 9px; border-radius: 999px; color: #6e4a11; background: rgba(110, 74, 17, 0.12); font-size: 10px; font-weight: 900; letter-spacing: 0.07em; }
@@ -243,21 +139,33 @@
     .offer-link { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; margin-top: 11px; padding: 0 15px; border-radius: 999px; color: #ffffff; background: #0a2145; font-size: 14px; font-weight: 900; }
     .close-offer { position: absolute; top: 7px; right: 7px; width: 30px; height: 30px; border: 0; border-radius: 50%; color: #49330d; background: rgba(77, 52, 10, 0.1); font-size: 23px; line-height: 1; }
 
-    /* Ventana exclusiva para Info+: solo se muestra descripción */
-    .info-modal { position: fixed; inset: 0; z-index: 120; display: none; align-items: center; justify-content: center; padding: 16px; background: rgba(2, 8, 20, 0.76); }
-    .info-modal.open { display: flex; }
-    .info-modal-card { width: min(500px, 100%); max-height: 80vh; overflow-y: auto; padding: 22px; border: 1px solid rgba(244, 217, 147, 0.42); border-radius: 21px; color: var(--text); background: linear-gradient(135deg, #15335f, #091a35); box-shadow: var(--shadow); }
-    .info-modal-card h2 { margin: 0 38px 12px 0; color: var(--gold-light); font-size: 29px; line-height: 1.1; }
+    /* Info+ mantiene únicamente la descripción larga. */
+    .info-modal, .order-modal { position: fixed; inset: 0; z-index: 130; display: none; align-items: center; justify-content: center; padding: 16px; background: rgba(2, 8, 20, 0.78); }
+    .info-modal.open, .order-modal.open { display: flex; }
+    .modal-inner { position: relative; width: min(540px, 100%); }
+    .info-modal-card, .order-modal-card { max-height: calc(100dvh - 32px); overflow-y: auto; padding: 22px; border: 1px solid rgba(244, 217, 147, 0.44); border-radius: 21px; color: var(--text); background: linear-gradient(135deg, #15335f, #091a35); box-shadow: var(--shadow); }
+    .info-modal-card h2, .order-modal-card h2 { margin: 0 42px 12px 0; color: var(--gold-light); font-size: 30px; line-height: 1.1; }
     .info-modal-card p { margin: 0; white-space: pre-line; color: #edf1f8; font-size: 16px; }
-    .info-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; color: var(--text); background: rgba(255, 255, 255, 0.08); font-size: 25px; line-height: 1; }
-    .modal-inner { position: relative; width: min(500px, 100%); }
+    .modal-close { position: absolute; top: 13px; right: 13px; z-index: 2; width: 38px; height: 38px; border: 1px solid var(--line); border-radius: 50%; color: var(--text); background: rgba(255, 255, 255, 0.09); font-size: 26px; line-height: 1; }
+
+    /* NUEVO: formulario flotante para pedir el producto seleccionado. */
+    .selected-product-box { margin: 0 0 15px; padding: 13px; border: 1px solid rgba(244, 217, 147, 0.34); border-radius: 14px; background: rgba(212, 166, 79, 0.10); }
+    .selected-product-box span { display: block; color: #cfd8e8; font-size: 12px; }
+    .selected-product-box strong { display: block; margin-top: 2px; color: var(--gold-light); font-family: Georgia, serif; font-size: 20px; line-height: 1.18; }
+    .selected-product-box p { margin: 5px 0 0; color: #f9edc6; font-size: 14px; font-weight: 700; }
+    .order-form { display: grid; gap: 12px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+    .order-form label { display: grid; gap: 5px; color: #dce5f2; font-size: 13px; font-weight: 700; }
+    .order-form input, .order-form textarea { width: 100%; min-height: 50px; padding: 12px 13px; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 13px; color: var(--text); background: #07172f; font-size: 16px; }
+    .order-form textarea { min-height: 88px; resize: vertical; }
+    .modal-note { margin: 0; color: #c7d1e0; font-size: 12px; }
+    .modal-submit { width: 100%; min-height: 54px; border: 0; border-radius: 999px; color: #2b200c; background: linear-gradient(135deg, var(--gold), var(--gold-light)); font-size: 16px; font-weight: 900; }
 
     footer { padding: 0 0 15px; }
     .footer { color: var(--muted); font-size: 12px; text-align: center; }
 
     @media (max-width: 860px) {
       .trust-grid, .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .order-card { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 560px) {
@@ -273,6 +181,7 @@
       .offer-banner { align-items: flex-start; flex-direction: column; }
       .offer-banner a { width: 100%; justify-content: center; }
       .floating-offer { bottom: 80px; }
+      .info-modal-card, .order-modal-card { padding: 20px 16px; }
     }
   </style>
 </head>
@@ -286,7 +195,7 @@
           <span>Store</span>
         </span>
       </a>
-      <a class="nav-link" href="#pedido">Hacer pedido</a>
+      <a class="nav-link" href="#catalogo">Ver productos</a>
     </div>
   </header>
 
@@ -296,7 +205,7 @@
         <div class="hero-card">
           <span class="hero-badge">Compra fácil · Atención directa</span>
           <h1>Comprar es fácil y seguro</h1>
-          <p>Elige el producto, revisa sus fotos, toca “Pedir por WhatsApp” y nosotros te ayudamos a confirmar tu pedido paso a paso.</p>
+          <p>Elige el producto, revisa sus fotos, toca “Comprar” y llena tus datos en un formulario simple para confirmar el pedido por WhatsApp.</p>
           <div class="hero-actions">
             <a class="button button-gold" href="#catalogo" data-track="ver_productos">Ver productos</a>
             <a class="button button-dark" href="https://wa.me/593999810097?text=Hola,%20necesito%20ayuda%20para%20hacer%20un%20pedido" target="_blank" rel="noopener noreferrer" data-track="ayuda_whatsapp">Necesito ayuda</a>
@@ -328,7 +237,7 @@
       <div class="container">
         <details>
           <summary>¿Cómo compro?</summary>
-          <p>1. Elige un producto. 2. Revisa sus fotos y precio. 3. Presiona “Pedir por WhatsApp”. 4. Confirma tu nombre, ciudad y dirección.</p>
+          <p>1. Elige un producto. 2. Revisa sus fotos y precio. 3. Toca “Comprar”. 4. Llena el formulario que aparece. 5. Se abre WhatsApp para confirmar el pedido.</p>
         </details>
         <details>
           <summary>¿Cómo funcionan las promociones?</summary>
@@ -357,36 +266,6 @@
         </div>
       </div>
     </section>
-
-    <section id="pedido" class="order-section">
-      <div class="container">
-        <div class="order-card">
-          <div>
-            <h2>Confirma tu pedido</h2>
-            <p>Llena estos datos y se abrirá WhatsApp. Nosotros confirmaremos contigo el producto, el precio y la entrega.</p>
-            <div class="order-points">
-              <span>✓ No necesitas pagar en esta página.</span>
-              <span>✓ Te atendemos directamente por WhatsApp.</span>
-              <span>✓ Tus datos se usan solo para gestionar el pedido.</span>
-            </div>
-          </div>
-          <form id="orderForm" class="order-form">
-            <div class="form-row">
-              <input name="nombre" required autocomplete="name" placeholder="Escribe tu nombre completo" />
-              <input name="telefono" required autocomplete="tel" inputmode="tel" placeholder="Escribe tu teléfono" />
-            </div>
-            <div class="form-row">
-              <input name="ciudad" required autocomplete="address-level2" placeholder="Ciudad donde recibes" />
-              <select id="productSelect" name="producto" required></select>
-            </div>
-            <input name="direccion" required autocomplete="street-address" placeholder="Dirección y referencia para entregar" />
-            <textarea name="observaciones" placeholder="Escribe aquí un detalle adicional (opcional)"></textarea>
-            <span class="form-note">Al tocar el botón se abrirá WhatsApp con tu información.</span>
-            <button class="button button-gold" type="submit" data-track="enviar_formulario">Enviar mi pedido por WhatsApp</button>
-          </form>
-        </div>
-      </div>
-    </section>
   </main>
 
   <aside id="floatingOffer" class="floating-offer" aria-label="Oferta especial">
@@ -398,13 +277,41 @@
     <a id="viewPromotionsFloat" class="offer-link" href="#catalogo" data-track="ver_ofertas_flotante">Ver ofertas</a>
   </aside>
 
-  <!-- Info+ solo despliega la descripción completa del producto -->
+  <!-- Modal Info+: solo la descripción completa -->
   <div id="infoModal" class="info-modal" aria-hidden="true">
     <div class="modal-inner">
-      <button id="closeInfo" class="info-close" type="button" aria-label="Cerrar información">×</button>
+      <button id="closeInfo" class="modal-close" type="button" aria-label="Cerrar información">×</button>
       <div class="info-modal-card">
         <h2 id="infoTitle">Información del producto</h2>
         <p id="infoDescription"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- NUEVO: Modal de compra con producto ya seleccionado -->
+  <div id="orderModal" class="order-modal" aria-hidden="true">
+    <div class="modal-inner">
+      <button id="closeOrder" class="modal-close" type="button" aria-label="Cerrar formulario">×</button>
+      <div class="order-modal-card">
+        <h2>Confirma tu pedido</h2>
+        <div class="selected-product-box">
+          <span>Producto seleccionado</span>
+          <strong id="selectedProductName">Producto</strong>
+          <p id="selectedProductPrice">Precio</p>
+        </div>
+        <form id="floatingOrderForm" class="order-form">
+          <div class="form-row">
+            <label>Tu nombre completo<input name="nombre" required autocomplete="name" placeholder="Escribe tu nombre" /></label>
+            <label>Tu teléfono<input name="telefono" required autocomplete="tel" inputmode="tel" placeholder="Ejemplo: 0999999999" /></label>
+          </div>
+          <div class="form-row">
+            <label>Ciudad<input name="ciudad" required autocomplete="address-level2" placeholder="Ciudad donde recibes" /></label>
+            <label>Dirección<input name="direccion" required autocomplete="street-address" placeholder="Calles y referencia" /></label>
+          </div>
+          <label>Observaciones<textarea name="observaciones" placeholder="Cantidad, color o detalle adicional (opcional)"></textarea></label>
+          <p class="modal-note">Al enviar, se abrirá WhatsApp con tus datos y el producto seleccionado.</p>
+          <button class="modal-submit" type="submit">Enviar pedido por WhatsApp</button>
+        </form>
       </div>
     </div>
   </div>
@@ -417,19 +324,21 @@
 
   <script>
     const WHATSAPP_NUMBER = '593999810097';
-    const state = { products: [], activeCategory: 'Todos' };
+    const state = { products: [], activeCategory: 'Todos', selectedProduct: null };
 
     const productGrid = document.getElementById('productGrid');
     const categoryList = document.getElementById('categoryList');
     const resultsText = document.getElementById('resultsText');
     const emptyMessage = document.getElementById('emptyMessage');
     const searchInput = document.getElementById('searchInput');
-    const productSelect = document.getElementById('productSelect');
-    const orderForm = document.getElementById('orderForm');
     const floatingOffer = document.getElementById('floatingOffer');
     const infoModal = document.getElementById('infoModal');
     const infoTitle = document.getElementById('infoTitle');
     const infoDescription = document.getElementById('infoDescription');
+    const orderModal = document.getElementById('orderModal');
+    const floatingOrderForm = document.getElementById('floatingOrderForm');
+    const selectedProductName = document.getElementById('selectedProductName');
+    const selectedProductPrice = document.getElementById('selectedProductPrice');
 
     function track(eventName, parameters = {}) {
       if (typeof gtag === 'function') gtag('event', eventName, parameters);
@@ -441,7 +350,7 @@
       })[character]);
     }
 
-    /* Compatible con tu admin y products.json actual. */
+    /* Compatible con tu products.json y con tu admin actual. */
     function getPromotion(product) {
       const fields = ['promocion', 'promotion', 'oferta', 'precioPromocional', 'precio_promo', 'combo', 'precioOferta'];
       for (const field of fields) {
@@ -455,15 +364,7 @@
     function getCategory(product) { return product?.categoria ?? product?.category ?? 'Productos'; }
     function getPrice(product) { return product?.precio ?? product?.price ?? product?.precioNormal ?? 'A confirmar'; }
     function getOldPrice(product) { return product?.precioAnterior ?? product?.oldPrice ?? ''; }
-
-    /* Descripción corta y larga: si tu admin usa detalle o descripcionCompleta, Info+ lo muestra. */
-    function getShortDescription(product) {
-      return product?.descripcionCorta ?? product?.descripcion ?? product?.shortDescription ?? 'Consulta disponibilidad por WhatsApp.';
-    }
-
-    function getFullDescription(product) {
-      return product?.detalle ?? product?.descripcionCompleta ?? product?.fullDescription ?? product?.descripcion ?? 'No hay información adicional para este producto.';
-    }
+    function getFullDescription(product) { return product?.detalle ?? product?.descripcionCompleta ?? product?.fullDescription ?? product?.descripcion ?? 'No hay información adicional para este producto.'; }
 
     function getPhotos(product) {
       const candidates = [product?.fotos, product?.imagenes, product?.images, product?.foto];
@@ -482,7 +383,7 @@
       const search = searchInput.value.trim().toLowerCase();
       return state.products.filter((product) => {
         const categoryMatch = state.activeCategory === 'Todos' || getCategory(product) === state.activeCategory;
-        const text = `${getName(product)} ${getCategory(product)} ${getShortDescription(product)} ${getPromotion(product)}`.toLowerCase();
+        const text = `${getName(product)} ${getCategory(product)} ${getFullDescription(product)} ${getPromotion(product)}`.toLowerCase();
         return categoryMatch && text.includes(search);
       });
     }
@@ -491,16 +392,14 @@
       return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     }
 
-    function messageFor(product, formData) {
+    function messageFor(product, data) {
       const promotion = getPromotion(product);
       const lines = ['Hola, quiero realizar un pedido.', '', `Producto: ${getName(product)}`, `Precio: ${getPrice(product)}`];
       if (promotion) {
         lines.push(`Promoción: ${promotion}`);
         lines.push('Descuento web solicitado: 10% en promoción por cantidad');
       }
-      if (formData) {
-        lines.push('', `Nombre: ${formData.nombre}`, `Teléfono: ${formData.telefono}`, `Ciudad: ${formData.ciudad}`, `Dirección: ${formData.direccion}`, `Observaciones: ${formData.observaciones || 'Sin observaciones'}`);
-      }
+      lines.push('', `Nombre: ${data.nombre}`, `Teléfono: ${data.telefono}`, `Ciudad: ${data.ciudad}`, `Dirección: ${data.direccion}`, `Observaciones: ${data.observaciones || 'Sin observaciones'}`);
       return lines.join('\n');
     }
 
@@ -515,19 +414,8 @@
     function galleryHtml(product, productIndex) {
       const photos = getPhotos(product);
       if (!photos.length) return '<div class="image-placeholder">Foto del producto</div>';
-
-      const images = photos.map((photo, index) => `
-        <img class="gallery-photo ${index === 0 ? 'active' : ''}" src="${escapeHtml(photo)}" alt="${escapeHtml(getName(product))} - foto ${index + 1}" loading="lazy" data-gallery-image="${productIndex}" data-photo-index="${index}" />
-      `).join('');
-
-      const dots = photos.length > 1 ? `
-        <div class="gallery-controls" aria-label="Cambiar foto del producto">
-          ${photos.map((_, index) => `
-            <button class="gallery-dot ${index === 0 ? 'active' : ''}" type="button" data-gallery-dot="${productIndex}" data-photo-index="${index}" aria-label="Ver foto ${index + 1}"></button>
-          `).join('')}
-        </div>
-      ` : '';
-
+      const images = photos.map((photo, index) => `<img class="gallery-photo ${index === 0 ? 'active' : ''}" src="${escapeHtml(photo)}" alt="${escapeHtml(getName(product))} - foto ${index + 1}" loading="lazy" data-gallery-image="${productIndex}" data-photo-index="${index}" />`).join('');
+      const dots = photos.length > 1 ? `<div class="gallery-controls" aria-label="Cambiar foto del producto">${photos.map((_, index) => `<button class="gallery-dot ${index === 0 ? 'active' : ''}" type="button" data-gallery-dot="${productIndex}" data-photo-index="${index}" aria-label="Ver foto ${index + 1}"></button>`).join('')}</div>` : '';
       return `${images}<span class="photo-counter">1 / ${photos.length}</span>${dots}`;
     }
 
@@ -550,20 +438,68 @@
               <h3>${escapeHtml(getName(product))}</h3>
               <div class="promotion-line">Promoción: ${escapeHtml(promotion)} · 10% OFF web</div>
               <div class="product-actions">
-                <a class="product-button buy" href="#pedido" data-product="${escapeHtml(getName(product))}">Pedir ahora</a>
+                <button class="product-button buy" type="button" data-buy-product="${escapeHtml(getName(product))}">Comprar</button>
                 <button class="product-button info" type="button" data-info-product="${escapeHtml(getName(product))}">Info +</button>
               </div>
             </div>
           </article>
         `;
       }).join('');
-
-      productSelect.innerHTML = '<option value="">Selecciona el producto que quieres</option>' + state.products.map((product) => `
-        <option value="${escapeHtml(getName(product))}">${escapeHtml(getName(product))} — ${escapeHtml(getPrice(product))}</option>
-      `).join('');
     }
 
     function renderAll() { renderCategories(); renderProducts(); }
+
+    function findProduct(name) { return state.products.find((product) => getName(product) === name); }
+
+    function openInfo(productName) {
+      const product = findProduct(productName);
+      if (!product) return;
+      infoTitle.textContent = getName(product);
+      infoDescription.textContent = getFullDescription(product);
+      infoModal.classList.add('open');
+      infoModal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+      document.getElementById('closeInfo').focus();
+      track('abrir_info_producto', { event_category: 'Producto', producto: productName });
+    }
+
+    function closeInfo() {
+      infoModal.classList.remove('open');
+      infoModal.setAttribute('aria-hidden', 'true');
+      if (!orderModal.classList.contains('open')) document.body.classList.remove('modal-open');
+    }
+
+    function openOrder(productName) {
+      const product = findProduct(productName);
+      if (!product) return;
+      state.selectedProduct = product;
+      selectedProductName.textContent = getName(product);
+      const promotion = getPromotion(product);
+      selectedProductPrice.textContent = promotion ? `${getPrice(product)} · Promoción: ${promotion}` : `Precio: ${getPrice(product)}`;
+      floatingOrderForm.reset();
+      orderModal.classList.add('open');
+      orderModal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+      floatingOrderForm.elements.nombre.focus();
+      track('abrir_formulario_producto', { event_category: 'Pedido', producto: productName });
+    }
+
+    function closeOrder() {
+      orderModal.classList.remove('open');
+      orderModal.setAttribute('aria-hidden', 'true');
+      if (!infoModal.classList.contains('open')) document.body.classList.remove('modal-open');
+    }
+
+    function changeGalleryPhoto(galleryIndex, photoIndex) {
+      const gallery = document.querySelector(`[data-gallery="${galleryIndex}"]`);
+      if (!gallery) return;
+      gallery.querySelectorAll('[data-gallery-image]').forEach((image) => image.classList.toggle('active', Number(image.dataset.photoIndex) === photoIndex));
+      gallery.querySelectorAll('[data-gallery-dot]').forEach((dot) => dot.classList.toggle('active', Number(dot.dataset.photoIndex) === photoIndex));
+      const counter = gallery.querySelector('.photo-counter');
+      const total = gallery.querySelectorAll('[data-gallery-image]').length;
+      if (counter) counter.textContent = `${photoIndex + 1} / ${total}`;
+      track('ver_foto_producto', { event_category: 'Producto', foto_numero: photoIndex + 1 });
+    }
 
     function focusPromotions() {
       state.activeCategory = 'Todos';
@@ -574,37 +510,6 @@
       if (firstPromotion) firstPromotion.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
-    function openInfo(productName) {
-      const product = state.products.find((item) => getName(item) === productName);
-      if (!product) return;
-      infoTitle.textContent = getName(product);
-      infoDescription.textContent = getFullDescription(product);
-      infoModal.classList.add('open');
-      infoModal.setAttribute('aria-hidden', 'false');
-      document.getElementById('closeInfo').focus();
-      track('abrir_info_producto', { event_category: 'Producto', producto: productName });
-    }
-
-    function closeInfo() {
-      infoModal.classList.remove('open');
-      infoModal.setAttribute('aria-hidden', 'true');
-    }
-
-    function changeGalleryPhoto(galleryIndex, photoIndex) {
-      const gallery = document.querySelector(`[data-gallery="${galleryIndex}"]`);
-      if (!gallery) return;
-      gallery.querySelectorAll('[data-gallery-image]').forEach((image) => {
-        image.classList.toggle('active', Number(image.dataset.photoIndex) === photoIndex);
-      });
-      gallery.querySelectorAll('[data-gallery-dot]').forEach((dot) => {
-        dot.classList.toggle('active', Number(dot.dataset.photoIndex) === photoIndex);
-      });
-      const counter = gallery.querySelector('.photo-counter');
-      const total = gallery.querySelectorAll('[data-gallery-image]').length;
-      if (counter) counter.textContent = `${photoIndex + 1} / ${total}`;
-      track('ver_foto_producto', { event_category: 'Producto', foto_numero: photoIndex + 1 });
-    }
-
     document.addEventListener('click', (event) => {
       const category = event.target.closest('[data-category]');
       if (category) {
@@ -613,14 +518,11 @@
         renderAll();
       }
 
-      const product = event.target.closest('[data-product]');
-      if (product) {
-        productSelect.value = product.dataset.product;
-        track('seleccionar_producto', { event_category: 'Producto', producto: product.dataset.product });
-      }
-
       const infoButton = event.target.closest('[data-info-product]');
       if (infoButton) openInfo(infoButton.dataset.infoProduct);
+
+      const buyButton = event.target.closest('[data-buy-product]');
+      if (buyButton) openOrder(buyButton.dataset.buyProduct);
 
       const dot = event.target.closest('[data-gallery-dot]');
       if (dot) changeGalleryPhoto(dot.dataset.galleryDot, Number(dot.dataset.photoIndex));
@@ -639,18 +541,26 @@
     document.getElementById('viewPromotionsFloat').addEventListener('click', focusPromotions);
     document.getElementById('viewPromotionsTop').addEventListener('click', focusPromotions);
     document.getElementById('closeInfo').addEventListener('click', closeInfo);
+    document.getElementById('closeOrder').addEventListener('click', closeOrder);
     infoModal.addEventListener('click', (event) => { if (event.target === infoModal) closeInfo(); });
-    document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeInfo(); });
+    orderModal.addEventListener('click', (event) => { if (event.target === orderModal) closeOrder(); });
 
-    orderForm.addEventListener('submit', (event) => {
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeInfo();
+        closeOrder();
+      }
+    });
+
+    floatingOrderForm.addEventListener('submit', (event) => {
       event.preventDefault();
-      if (!orderForm.checkValidity()) {
-        orderForm.reportValidity();
+      if (!floatingOrderForm.checkValidity()) {
+        floatingOrderForm.reportValidity();
         return;
       }
+      if (!state.selectedProduct) return;
 
-      const form = new FormData(orderForm);
-      const selectedProduct = state.products.find((product) => getName(product) === form.get('producto'));
+      const form = new FormData(floatingOrderForm);
       const data = {
         nombre: form.get('nombre').trim(),
         telefono: form.get('telefono').trim(),
@@ -659,9 +569,9 @@
         observaciones: form.get('observaciones').trim()
       };
 
-      const fallback = { nombre: form.get('producto'), precio: 'A confirmar' };
-      track('formulario_pedido_enviado', { event_category: 'Pedido', producto: form.get('producto') });
-      window.open(waUrl(messageFor(selectedProduct || fallback, data)), '_blank', 'noopener,noreferrer');
+      track('formulario_pedido_enviado', { event_category: 'Pedido', producto: getName(state.selectedProduct) });
+      window.open(waUrl(messageFor(state.selectedProduct, data)), '_blank', 'noopener,noreferrer');
+      closeOrder();
     });
 
     async function loadProducts() {
